@@ -39,18 +39,18 @@ jobs:
           install: false
           command: "pnpm test:integration"
 
-  # trigger-workflow:
-  #   name: Trigger Workflow
-  #   needs: [run-tests]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Trigger Workflow of Main Repo
-  #       uses: peter-evans/repository-dispatch@v1
-  #       with:
-  #         token: ${{ secrets.PAT }}
-  #         repository: johnshift/multirepo-cicd
-  #         event-type: frontend
-  #         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref-repo": "${{ github.repository }}"}'
+  trigger-workflow:
+    name: Trigger Workflow
+    needs: [run-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Workflow of Main Repo
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT }}
+          repository: johnshift/multirepo-cicd
+          event-type: frontend
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref-repo": "${{ github.repository }}"}'
 
   # merge-to-main:
   #   name: Merge dev branch to main
