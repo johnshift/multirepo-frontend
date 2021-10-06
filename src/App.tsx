@@ -1,4 +1,4 @@
 const App = () => {
-  return <h1 data-testid="title">Hello world!</h1>;
+  return <h1 data-testid="title">Hello MAIN!</h1>;
 };
 export default App;
