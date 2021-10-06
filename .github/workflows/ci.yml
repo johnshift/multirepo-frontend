@@ -37,7 +37,7 @@ jobs:
           browser: chrome
           headless: true
           install: false
-          command: pnpm --dir cypress/ cypress:ci
+          command: "pnpm test:integration"
 
   # trigger-workflow:
   #   name: Trigger Workflow
