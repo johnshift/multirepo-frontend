@@ -7,7 +7,8 @@
     "plugin:jsx-a11y/recommended", // Turns on a11y rules for JSX.
     "plugin:@typescript-eslint/recommended", // Turns on rules from TypeScript-specific plugin.
     "plugin:@typescript-eslint/recommended-requiring-type-checking", // Turns on rules from TypeScript-specific plugin.
-    "plugin:prettier/recommended" // Turns off all rules that are unnecessary or might conflict with Prettier.
+    "plugin:prettier/recommended", // Turns off all rules that are unnecessary or might conflict with Prettier.
+    "plugin:testing-library/react"
   ],
   "plugins": [
     "react",
@@ -15,7 +16,8 @@
     "jsx-a11y",
     "@typescript-eslint",
     "import",
-    "simple-import-sort" // Plugin for sorting imports in file.
+    "simple-import-sort", // Plugin for sorting imports in file.
+    "testing-library"
   ],
   "rules": {
     "react/prop-types": "off",
