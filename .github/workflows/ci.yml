@@ -25,7 +25,7 @@ jobs:
           node-version: '14'
           cache: 'pnpm'
       - name: Build
-        run: pnpm install && pnpm format && pnpm lint && pnpm build
+        run: pnpm install --frozen-lockfile && pnpm format && pnpm lint && pnpm build
       - name: Run Unit Tests
         run: pnpm test:unit
       - name: Run Integration Tests
@@ -36,6 +36,7 @@ jobs:
           wait-on-timeout: 30
           browser: chrome
           headless: true
+          install-command: pnpm --frozen-lockfile --reporter=silent
 
   # trigger-workflow:
   #   name: Trigger Workflow
