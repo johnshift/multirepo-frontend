@@ -17,7 +17,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.16.1
+          version: 6
           # run_install: true
       - name: Setup Node
         uses: actions/setup-node@v2
@@ -36,7 +36,8 @@ jobs:
           wait-on-timeout: 30
           browser: chrome
           headless: true
-          install-command: pnpm --frozen-lockfile --reporter=silent
+          install: false
+          command: pnpm --dir cypress/ cypress:ci
 
   # trigger-workflow:
   #   name: Trigger Workflow
