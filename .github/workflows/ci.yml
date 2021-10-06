@@ -14,16 +14,16 @@ jobs:
         with:
           repository: johnshift/multirepo-frontend
           ref: 'dev'
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          cache: 'pnpm'
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.16.1
           # run_install: true
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'pnpm'
       - name: Build
         run: pnpm install && pnpm format && pnpm lint && pnpm build
       - name: Run Unit Tests
