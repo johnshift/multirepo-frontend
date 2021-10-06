@@ -9,24 +9,40 @@ jobs:
     name: Run Test
     runs-on: ubuntu-latest
     steps:
-      - name: Execute Tests
-        run: |
-          echo "Running Tests ..."
-          sleep 10
-          echo "Tests PASSED"
-
-  trigger-workflow:
-    name: Trigger Workflow
-    needs: [run-tests]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Workflow of Main Repo
-        uses: peter-evans/repository-dispatch@v1
+      - name: Checkout frontend repository
+        uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT }}
-          repository: johnshift/multirepo-cicd
-          event-type: frontend
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref-repo": "${{ github.repository }}"}'
+          repository: johnshift/multirepo-frontend
+          ref: 'dev'
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+          cache: 'pnpm'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.16.1
+          run_install: true
+      - name: Run Format and Lint
+        run: pnpm format && pnpm lint
+      - name: Run Unit Tests
+        run: pnpm test:unit
+      - name: "TODO: Run Integration Test"
+        run: echo "..."
+
+  # trigger-workflow:
+  #   name: Trigger Workflow
+  #   needs: [run-tests]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Trigger Workflow of Main Repo
+  #       uses: peter-evans/repository-dispatch@v1
+  #       with:
+  #         token: ${{ secrets.PAT }}
+  #         repository: johnshift/multirepo-cicd
+  #         event-type: frontend
+  #         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref-repo": "${{ github.repository }}"}'
 
   # merge-to-main:
   #   name: Merge dev branch to main
