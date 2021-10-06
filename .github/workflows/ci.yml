@@ -15,7 +15,7 @@ jobs:
           repository: johnshift/multirepo-frontend
           ref: 'dev'
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'pnpm'
@@ -23,9 +23,9 @@ jobs:
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.16.1
-          run_install: true
-      - name: Run Format and Lint
-        run: pnpm format && pnpm lint
+          # run_install: true
+      - name: Build
+        run: pnpm install && pnpm format && pnpm lint && pnpm build
       - name: Run Unit Tests
         run: pnpm test:unit
       - name: "TODO: Run Integration Test"
