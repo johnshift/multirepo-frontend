@@ -28,8 +28,14 @@ jobs:
         run: pnpm install && pnpm format && pnpm lint && pnpm build
       - name: Run Unit Tests
         run: pnpm test:unit
-      - name: "TODO: Run Integration Test"
-        run: echo "..."
+      - name: Run Integration Tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: pnpm start
+          wait-on: "http://localhost:5000"
+          wait-on-timeout: 30
+          browser: chrome
+          headless: true
 
   # trigger-workflow:
   #   name: Trigger Workflow
