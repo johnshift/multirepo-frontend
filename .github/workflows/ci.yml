@@ -31,22 +31,10 @@ jobs:
         with:
           node-version: '14'
           cache: 'pnpm'
-      - name: Install serve
-        run: npm install serve -g
       - name: Build
         run: pnpm install --frozen-lockfile && pnpm build
       - name: Run Unit Tests
-        run: pnpm test:unit
-      - name: Run Integration Tests
-        uses: cypress-io/github-action@v2
-        with:
-          start: serve -s build
-          wait-on: "http://localhost:5000"
-          wait-on-timeout: 30
-          browser: chrome
-          headless: true
-          install: false
-          command: "pnpm test:integration"
+        run: pnpm test
 
   trigger-workflow:
     name: Trigger Workflow
