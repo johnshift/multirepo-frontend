@@ -4,7 +4,10 @@ import { Flex, Center, Heading } from '@chakra-ui/react';
 const Home = (): JSX.Element => (
   <Flex align="center" justify="center" h="100vh">
     <Center>
-      <Heading>{process.env.REACT_APP_HELLO}</Heading>
+      <Heading>
+        Msg:
+        {process.env.REACT_APP_HELLO}
+      </Heading>
     </Center>
   </Flex>
 );
