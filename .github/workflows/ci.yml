@@ -38,7 +38,7 @@ jobs:
       - name: Run Integration Tests
         uses: cypress-io/github-action@v2
         with:
-          start: npm install -g serve && pnpm build && serve -s build
+          start: pnpm start
           wait-on: "http://localhost:5000"
           wait-on-timeout: 30
           browser: chrome
