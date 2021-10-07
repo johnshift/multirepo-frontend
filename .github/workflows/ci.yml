@@ -13,6 +13,8 @@ jobs:
   run-tests:
     name: Run Test
     runs-on: ubuntu-latest
+    env:
+      CI: true # cra env
     steps:
       - name: Checkout frontend repository
         uses: actions/checkout@v2
@@ -30,13 +32,13 @@ jobs:
           node-version: '14'
           cache: 'pnpm'
       - name: Build
-        run: pnpm install --frozen-lockfile && pnpm format && pnpm lint && pnpm build
+        run: pnpm install --frozen-lockfile && pnpm build
       - name: Run Unit Tests
         run: pnpm test:unit
       - name: Run Integration Tests
         uses: cypress-io/github-action@v2
         with:
-          start: pnpm start
+          start: npm install -g serve && pnpm build && serve -s build
           wait-on: "http://localhost:5000"
           wait-on-timeout: 30
           browser: chrome
