@@ -1,7 +1,4 @@
-node_modules/
-
-# Ignore artifacts:
-build/
-coverage/
-vite.config.ts
-jest.config.js
+.css
+.svg
+reportWebVitals.ts
+serviceWorker.ts
