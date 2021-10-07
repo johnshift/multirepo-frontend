@@ -31,6 +31,8 @@ jobs:
         with:
           node-version: '14'
           cache: 'pnpm'
+      - name: Install serve
+        run: npm install serve -g
       - name: Build
         run: pnpm install --frozen-lockfile && pnpm build
       - name: Run Unit Tests
@@ -38,7 +40,7 @@ jobs:
       - name: Run Integration Tests
         uses: cypress-io/github-action@v2
         with:
-          start: pnpm start
+          start: serve -s build
           wait-on: "http://localhost:5000"
           wait-on-timeout: 30
           browser: chrome
