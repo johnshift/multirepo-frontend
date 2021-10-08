@@ -1,21 +1,33 @@
 import React from 'react';
-import { Flex, Center, Heading } from '@chakra-ui/react';
+import {
+  Flex, Box, Center, Heading,
+} from '@chakra-ui/react';
 
 const Home = (): JSX.Element => (
-  <Flex align="center" justify="center" h="100vh">
-    <Center>
-      <Heading>
-        Msg:
-        {process.env.REACT_APP_HELLO}
-      </Heading>
-      <br />
-      <br />
-      <Heading>
-        API URL:
-        {process.env.REACT_APP_API_URL}
-      </Heading>
-    </Center>
-  </Flex>
+  <Center>
+    <Flex align="center" justify="center" h="100vh" flexWrap="wrap">
+      <Box flexBasis="100%">
+        <Heading>
+          Msg: sadfsdf
+          {process.env.REACT_APP_HELLO}
+        </Heading>
+      </Box>
+
+      <Box flexBasis="100%">
+        <Heading>
+          REACT_APP_API_URL:
+          {process.env.REACT_APP_API_URL}
+        </Heading>
+      </Box>
+
+      <Box flexBasis="100%">
+        <Heading>
+          API_URL:
+          {process.env.API_URL}
+        </Heading>
+      </Box>
+    </Flex>
+  </Center>
 );
 
 export default Home;
