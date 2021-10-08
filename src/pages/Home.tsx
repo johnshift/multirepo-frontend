@@ -15,15 +15,8 @@ const Home = (): JSX.Element => (
 
       <Box flexBasis="100%">
         <Heading>
-          REACT_APP_API_URL:
-          {process.env.REACT_APP_API_URL}
-        </Heading>
-      </Box>
-
-      <Box flexBasis="100%">
-        <Heading>
           API_URL:
-          {process.env.API_URL}
+          {process.env.REACT_APP_API_URL}
         </Heading>
       </Box>
     </Flex>
