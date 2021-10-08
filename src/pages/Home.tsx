@@ -8,6 +8,12 @@ const Home = (): JSX.Element => (
         Msg:
         {process.env.REACT_APP_HELLO}
       </Heading>
+      <br />
+      <br />
+      <Heading>
+        API URL:
+        {process.env.REACT_APP_API_URL}
+      </Heading>
     </Center>
   </Flex>
 );
